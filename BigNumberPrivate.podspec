@@ -15,7 +15,9 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "BigNumber"
+  s.swift_version = '4.0'
+  
+  s.name         = "BigNumberPrivate"
   s.version      = "2.0"
   s.summary      = "A lightweight, high performance bignum library for Swift!"
 
@@ -28,7 +30,7 @@ Pod::Spec.new do |s|
 A lightweight, high performance bignum library for Swift for both intergers and doubles!
                    DESC
 
-  s.homepage     = "https://github.com/mkrd/Swift-Big-Integer"
+  s.homepage     = "https://github.com/Ben-Henshall/Swift-Big-Integer"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -80,7 +82,7 @@ A lightweight, high performance bignum library for Swift for both intergers and 
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/mkrd/Swift-Big-Integer.git", :tag => "v#{s.version}" }
+  s.source       = { :git => "https://github.com/Ben-Henshall/Swift-Big-Integer.git", :branch => 'fix-scientific-notation' }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
