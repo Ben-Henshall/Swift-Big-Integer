@@ -204,27 +204,6 @@ public struct BInt:
 		return 1 + (self.limbs.count * MemoryLayout<Limb>.size * 8)
 	}
 
-	/// Returns a formated human readable string that says how much space (in bytes, kilobytes, megabytes, or gigabytes) the BInt occupies.
-	public var sizeDescription: String
-	{
-		// One bit for the sign, plus the size of the limbs.
-		let bits = self.size
-
-		if bits < 8_000
-		{
-			return String(format: "%.1f b", Double(bits) / 8.0)
-		}
-		if bits < 8_000_000
-		{
-			return String(format: "%.1f kb", Double(bits) / 8_000.0)
-		}
-		if bits < 8_000_000_000
-		{
-			return String(format: "%.1f mb", Double(bits) / 8_000_000.0)
-		}
-		return String(format: "%.1f gb", Double(bits) / 8_000_000_000.0)
-	}
-
 	//
 	//
 	//	MARK: - Initializers
