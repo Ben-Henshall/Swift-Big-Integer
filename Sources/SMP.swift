@@ -2544,30 +2544,6 @@ public struct BDouble:
 		return 1 + ((self.numerator.count + self.denominator.count) * MemoryLayout<Limb>.size * 8)
 	}
 
-	/**
-	 * Returns a formated human readable string that says how much space
-	 * (in bytes, kilobytes, megabytes, or gigabytes) the BDouble occupies
-	*/
-	public var sizeDescription: String
-	{
-		// One bit for the sign, plus the size of the numerator and denominator.
-		let bits = self.size
-
-		if bits < 8_000
-		{
-			return String(format: "%.1f b", Double(bits) / 8.0)
-		}
-		if bits < 8_000_000
-		{
-			return String(format: "%.1f kb", Double(bits) / 8_000.0)
-		}
-		if bits < 8_000_000_000
-		{
-			return String(format: "%.1f mb", Double(bits) / 8_000_000.0)
-		}
-		return String(format: "%.1f gb", Double(bits) / 8_000_000_000.0)
-	}
-
 	public func rawData() -> (sign: Bool, numerator: [UInt64], denominator: [UInt64])
 	{
 		return (self.sign, self.numerator, self.denominator)
