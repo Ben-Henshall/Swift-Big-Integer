@@ -27,10 +27,10 @@ class BDoubleTests : XCTestCase {
 		XCTAssertNotNil(BDouble("+1.2e-123"))
 		XCTAssert(BDouble("0") == 0.0)
 		XCTAssert(BDouble("10") == 10.0)
-		XCTAssert(BDouble("1.2e10")?.fractionDescription == "120000000000")
-		XCTAssert(BDouble("1.2e+10")?.fractionDescription == "120000000000")
-		XCTAssert(BDouble("+1.2e+10")?.fractionDescription == "120000000000")
-		XCTAssert(BDouble("-1.2e10")?.fractionDescription == "-120000000000")
+		XCTAssert(BDouble("1.2e10")?.fractionDescription == "12000000000")
+		XCTAssert(BDouble("1.2e+10")?.fractionDescription == "12000000000")
+		XCTAssert(BDouble("+1.2e+10")?.fractionDescription == "12000000000")
+		XCTAssert(BDouble("-1.2e10")?.fractionDescription == "-12000000000")
 		XCTAssert(BDouble("1.2")?.fractionDescription == "6/5")
 		
 		for _ in 0..<100 {
@@ -111,6 +111,11 @@ class BDoubleTests : XCTestCase {
 			("-0.00009", "0.0000", 4),
 			("-0.00009", "-0.00009", 5),
 			("-0.00009", "-0.000090", 6),
+      ("-0.7162", "-0.7", 1),
+      ("-0.7162", "-0.71", 2),
+      ("-0.7162", "-0.716", 3),
+      ("-0.7162", "-0.7162", 4),
+      ("-0.7162", "-0.7162000000", 10)
 		]
 
 		for (original, test, precision) in testValues

@@ -2278,7 +2278,7 @@ public struct BDouble:
 				if sign
 				{
 					if let safeAfterExp = Int(afterExp) {
-						let den = ["1"] + [Character](repeating: "0", count: safeAfterExp - existingE)
+						let den = ["1"] + [Character](repeating: "0", count: safeAfterExp + existingE)
 						self.init(beforeExp, over: String(den))
 						return
 					}

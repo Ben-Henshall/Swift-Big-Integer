@@ -370,7 +370,7 @@
 				TargetAttributes = {
 					AE8388A5203F1CAF00FAC88F = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = WB24NP9E4V;
+						DevelopmentTeam = 24MJ526PQD;
 						ProvisioningStyle = Automatic;
 					};
 					AE8388AD203F1CB000FAC88F = {
@@ -391,7 +391,7 @@
 					};
 					F646295B1FF017EA0074A180 = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = WB24NP9E4V;
+						DevelopmentTeam = 24MJ526PQD;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -539,7 +539,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = WB24NP9E4V;
+				DEVELOPMENT_TEAM = 24MJ526PQD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -570,7 +570,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = WB24NP9E4V;
+				DEVELOPMENT_TEAM = 24MJ526PQD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -857,7 +857,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = WB24NP9E4V;
+				DEVELOPMENT_TEAM = 24MJ526PQD;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -879,7 +879,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = WB24NP9E4V;
+				DEVELOPMENT_TEAM = 24MJ526PQD;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
