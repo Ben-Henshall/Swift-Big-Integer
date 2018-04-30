@@ -1,12 +1,14 @@
-# BInt and BDouble
-BInt and BDouble is a lightweight, and easy-to-use, arbitrary precision arithmetric library for Swift 3. It supports whole Numbers (BInt) and Fractions (BDouble) with most of the common math operators like addition, subtraction, multiplication, exponentiation, modulus and division. Some optimized math functions like factorial or gcd are also implemented. So more details, please continue reading.
+# Swift-Big-Number
+Swift-Big-Number is a lightweight, and easy-to-use, arbitrary precision arithmetric library for Swift 4. It supports whole Numbers (BInt) and Fractions (BDouble) with most of the common math operators like addition, subtraction, multiplication, exponentiation, modulus and division. Some optimized math functions like factorial or gcd are also implemented. So more details, please continue reading.
 
 Some benchmarks are located in Benchmarks.swift, note that these are more than 10 times faster in release mode.
 
 
 
 ## Installation
-Simply drag the SMP.swift file from the sources folder into your project!
+
+### Manual
+Simply drag the Swift-Big-Number-Core.swift file from the sources folder into your project!
 Yes, it's that easy :)
 
 ### Swift Package Manager
@@ -41,12 +43,12 @@ BInt(String, radix: Int)?
 
 #### Examples:
 ```swift
-let i = BInt(12)
-let i = BInt(-9234)
-let i = BInt("-2343241765837645983267582365876326491813491053680428560284652986203287826526")!
+let integer = BInt(12)
+let hexadecimal = BInt("fff", radix: 16)
+let string = BInt("-234324176583764598326758236587632649181349105368042856028465298620328782652623")!
 ```
 
-#### BInt offers 7 struct methods:
+#### BInt offers these struct methods:
 ```swift
 let big = BInt("-143141341")!
 
@@ -80,8 +82,8 @@ BIntOrInt  -= BIntOrInt
 BIntOrInt  *  BIntOrInt // Returns BInt
 BIntOrInt  *= BIntOrInt
 
-// Powering
-BInt       ^  Int       // Retuns BInt to the power of Int
+// Exponentiation
+BInt       **  Int       // Retuns BInt to the power of Int
 
 // Modulo
 BIntOrInt  %  BIntOrInt // Returns BInt
@@ -159,10 +161,10 @@ BDouble(String, radix: Int)?
 
 #### Examples:
 ```swift
-let d = BDouble(221)
-let d = BDouble(1.192)
-let d = BDouble(3, over: 4)
-let d = BDouble("1" over: "3421342675925672365438867862653658268376582356831563158967")!
+let integer = BDouble(221)
+let double = BDouble(1.192)
+let fraction = BDouble(3, over: 4)
+let stringFraction = BDouble("1" over: "3421342675925672365438867862653658268376582356831563158967")!
 ```
 
 #### BDouble offers these struct methods:
@@ -211,7 +213,7 @@ a <= b <==> !(a > b)
 
 
 ## About performance
-BInt about twice as fast as mini-gmp, as of now (not counting the normal gmp, because it needs to be installed and is not portable). For example, BInt can add numbers about 2 times faster than GMP (272ms vs 530ms for fib(100,000)), and multiply more than 2 times faster. When given the task of calculating and printing factorials successively, BInt performs significantly better than GMP. In addition, GMP is significantly harder to use, especially in combination with Swift, while BInt offers an intuitive interface.
+BInt about twice as fast as mini-gmp, as of now (not counting the normal gmp, because it needs to be installed and is not portable). For example, BInt can add numbers about 2 times faster than GMP (272ms vs 530ms for fib(100,000)), and multiplication is more than twice as fast. When given the task of calculating and printing factorials successively, BInt performs significantly better than GMP. In addition, GMP is significantly harder to use, while BInt offers an intuitive interface.
 
 
 

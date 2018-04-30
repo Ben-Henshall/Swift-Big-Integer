@@ -94,7 +94,108 @@ class BDoubleTests : XCTestCase {
 			XCTAssert(pow(BDouble(rn), 1) == rn)
 		}
 	}
-	
+
+
+	func testDecimalExpansion()
+	{
+		let testValues = [
+			("0", "0.0", 0),
+			("0", "0.0", 1),
+			("0", "0.00", 2),
+			("0", "0.000", 3),
+			("12.345", "12.0", 0),
+			("12.345", "12.3", 1),
+			("12.345", "12.34", 2),
+			("12.345", "12.345", 3),
+			("12.345", "12.3450", 4),
+			("-0.00009", "0.0000", 4),
+			("-0.00009", "-0.00009", 5),
+			("-0.00009", "-0.000090", 6),
+		]
+
+		for (original, test, precision) in testValues
+		{
+			let result = BDouble(original)!.decimalExpansion(precisionAfterDecimalPoint: precision)
+			XCTAssert(result == test)
+		}
+	}
+
+	func test_decimalExpansionRandom()
+	{
+		func generateDoubleString(preDecimalCount: Int, postDecimalCount: Int) -> String
+		{
+			var numStr = ""
+
+			if preDecimalCount == 0 && postDecimalCount == 0
+			{
+				return math.random(0...1) == 1 ? "0" : "0.0"
+			}
+
+			if preDecimalCount == 0
+			{
+				numStr = "0."
+			}
+
+			if postDecimalCount == 0
+			{
+				numStr = math.random(0...1) == 1 ? "" : ".0"
+			}
+
+
+			for i in 0..<preDecimalCount
+			{
+				if i == (preDecimalCount - 1) && preDecimalCount > 1
+				{
+					numStr = math.random(1...9).description + numStr
+				}
+				else
+				{
+					numStr = math.random(0...9).description + numStr
+				}
+			}
+
+			if postDecimalCount != 0 && preDecimalCount != 0
+			{
+				numStr += "."
+			}
+
+			for _ in 0..<postDecimalCount
+			{
+				numStr = numStr + math.random(0...9).description
+			}
+
+			return math.random(0...1) == 1 ? numStr : "-" + numStr
+		}
+
+		for _ in 0..<2000
+		{
+			let preDecimalCount = math.random(0...4)
+			let postDecimalCount = math.random(0...4)
+			let doubleString = generateDoubleString(
+				preDecimalCount: preDecimalCount,
+				postDecimalCount: postDecimalCount
+			)
+
+			let toBDoubleAndBack = BDouble(doubleString)!.decimalExpansion(precisionAfterDecimalPoint: postDecimalCount)
+
+			if toBDoubleAndBack != doubleString
+			{
+				if toBDoubleAndBack == "0.0" && ["0", "-0"].contains(doubleString) { continue }
+				// For expmple, input: "13" and output "13.0" is okay
+				if toBDoubleAndBack[0..<(toBDoubleAndBack.count - 2)] == doubleString && toBDoubleAndBack.hasSuffix(".0") { continue }
+				// For expmple, input: "13" and output "13.0" is okay
+				if doubleString[1..<doubleString.count] == toBDoubleAndBack && doubleString.hasPrefix("-0.") { continue }
+
+				print("\nError: PreDecCount: \(preDecimalCount) PostDecCount: \(postDecimalCount)")
+				print("Previ: \(doubleString)")
+				print("After: \(toBDoubleAndBack)")
+				XCTAssert(false)
+			}
+
+
+		}
+	}
+
 	func testRounding() {
 		XCTAssert(BDouble("-1.0")?.rounded() == BInt("-1"))
 		XCTAssert(BDouble("-1.1")?.rounded() == BInt("-1"))
@@ -138,11 +239,8 @@ class BDoubleTests : XCTestCase {
 		bigD?.precision = 20
 		XCTAssert(bigD?.decimalDescription == "123456789.12345678900000000000")
 		bigD?.precision = 0
-		XCTAssert(bigD?.decimalDescription == "123456789")
-		bigD?.precision = -1
-		XCTAssert(bigD?.decimalDescription == "123456789")
-		bigD?.precision = -100
-		XCTAssert(bigD?.decimalDescription == "123456789")
+		XCTAssert(bigD?.decimalDescription == "123456789.0")
+
 		
 		bigD = BDouble("-123456789.123456789")
 		bigD?.precision = 2
@@ -154,11 +252,7 @@ class BDoubleTests : XCTestCase {
 		bigD?.precision = 20
 		XCTAssert(bigD?.decimalDescription == "-123456789.12345678900000000000")
 		bigD?.precision = 0
-		XCTAssert(bigD?.decimalDescription == "-123456789")
-		bigD?.precision = -1
-		XCTAssert(bigD?.decimalDescription == "-123456789")
-		bigD?.precision = -100
-		XCTAssert(bigD?.decimalDescription == "-123456789")
+		XCTAssert(bigD?.decimalDescription == "-123456789.0")
 		
 		bigD = BDouble("0.0000000003") // nine zeroes
 		bigD?.precision = 0

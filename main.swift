@@ -1,56 +1,29 @@
 import Foundation
 
 
-func iterateByLowestSumOfComponents(_ imax: Int, _ jmax: Int) -> [(Int, Int)]
+
+
+
+
+benchmarkPrint(title: "All tests passed, duration")
 {
-	var i, j: Int
-	var grid = [(Int, Int)]()
-
-	for sum in 0...(imax + jmax)
-	{
-		if sum < imax { (i, j) = (sum, 0) }
-		else { (i, j) = (imax, sum - imax) }
-
-		while j <= jmax && i >= 0
-		{
-			grid.append((i, j))
-			(i, j) = (i - 1, j + 1)
-		}
-	}
-	return grid
+    SMPTests.testBIntRandom()
+    SMPTests.testBInt()
+	SMPTests.testSteinGcd()
+//    MG_Matrix_Tests.testSparseMatrix()
 }
 
-
-print("Run Started.")
-
-
-
-print(Storage.readResource("gcdTest1"))
-
-
-
-
-//benchmarkPrint(title: "All tests passed, duration")
-//{
-//    SMP_Tests.testBaseConversionRandom()
-//    SMP_Tests.testBIntRandom()
-//    SMP_Tests.testBInt()
-//	SMP_Tests.testSteinGcd()
-//
-//    MG_Matrix_Tests.testSparseMatrix()
-//}
-
-//Benchmarks.BDoubleConverging()
-//Benchmarks.exponentiation()
-//Benchmarks.factorial()
-//Benchmarks.fibonacci()
-//Benchmarks.Matrix1()
-//Benchmarks.mersennes()
-//Benchmarks.BIntToString()
-//Benchmarks.StringToBInt()
-////Benchmarks.permutationsAndCombinations()
-//Benchmarks.multiplicationBalanced()
-//Benchmarks.multiplicationUnbalanced()
+Benchmarks.BDoubleConverging()
+Benchmarks.exponentiation()
+Benchmarks.factorial()
+Benchmarks.fibonacci()
+Benchmarks.Matrix1()
+Benchmarks.mersennes()
+Benchmarks.BIntToString()
+Benchmarks.StringToBInt()
+//Benchmarks.permutationsAndCombinations()
+Benchmarks.multiplicationBalanced()
+Benchmarks.multiplicationUnbalanced()
 
 
 
